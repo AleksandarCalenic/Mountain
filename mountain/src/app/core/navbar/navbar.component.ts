@@ -18,9 +18,8 @@ export class NavbarComponent implements OnInit {
   }
 
   getResourts(): void{
-    this.service.getResourts().subscribe(x => {
+    this.service.getResorts().subscribe(x => {
       this.mountain = x;
-      console.log(this.mountain);
     })
   }
 

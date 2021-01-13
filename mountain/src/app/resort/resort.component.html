@@ -1,1 +1,17 @@
-<p>resort works!</p>
+<div class="row">
+    <div class="col-5">
+        <img src="{{mountain?.picture}}" width="100%">
+    </div>
+    <div class="col-7">
+        <h3>{{mountain?.name}}, <small>{{mountain?.country}}</small></h3>
+        <p>{{mountain?.description}}</p>
+        <p>Elevation: {{mountain?.base_elevation_m}}, 
+            Highest Point: {{mountain?.highest_point}}, 
+            Top Elevation: {{mountain?.top_elevation_m}}
+        </p>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <app-resort-tabs></app-resort-tabs>
+</div>

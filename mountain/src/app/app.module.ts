@@ -8,6 +8,8 @@ import { HeadingComponent } from './core/heading/heading.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { ResortComponent } from './resort/resort.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ResortTabsComponent } from './resort/resort-tabs/resort-tabs.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeadingComponent,
     NavbarComponent,
     ResortComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ResortTabsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
