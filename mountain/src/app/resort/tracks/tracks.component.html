@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-9">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Length (km)</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of tracks">
+                    <td>{{t.name}}</td>
+                    <td>{{t.length_km}}</td>
+                    <td>{{t.rating}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3">
+        <form>
+            <label>Sort by:</label>
+            <select name="sortBy" [(ngModel)]="sortCriteria" (change)="changeSort()">
+                <option value="length_km">Length</option>
+                <option value="rating">Rating</option>
+            </select>
+        </form>
+    </div>
+</div>

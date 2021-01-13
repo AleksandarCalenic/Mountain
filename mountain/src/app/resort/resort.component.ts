@@ -25,7 +25,6 @@ export class ResortComponent implements OnInit {
   getMountain(): void{
     this.service.getMountain(this.id).subscribe(x => {
       this.mountain = x;
-      console.log(this.mountain);
     })
   }
 
