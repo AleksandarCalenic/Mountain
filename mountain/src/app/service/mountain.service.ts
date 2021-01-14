@@ -5,6 +5,8 @@ import { SkiResorts } from '../model/skiresorts';
 import { map } from 'rxjs/operators';
 import { Mountain } from '../model/mountain';
 import { Tracks } from '../model/tracks';
+import { Weather } from '../model/weather';
+
 
 const baseurl = "http://localhost:3000/api/skiresorts/";
 
@@ -37,6 +39,12 @@ export class MountainService {
     }
     return this.http.get(baseurl + id + "/tracks", queryParams).pipe(map(x =>{
       return x as Array<Tracks>
+    }))
+  }
+
+  getWeather(id: number): Observable<Weather[]>{
+    return this.http.get(baseurl + id + '/weather').pipe(map(x =>{
+      return x as Array<Weather>
     }))
   }
 

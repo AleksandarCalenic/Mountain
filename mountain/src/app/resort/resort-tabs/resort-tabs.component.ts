@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tracks } from 'src/app/model/tracks';
+import { Weather } from 'src/app/model/weather';
 import { MountainService } from 'src/app/service/mountain.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ResortTabsComponent implements OnInit {
   active = 1;
   id: number;
   tracks: Tracks[];
+  weather: Weather[];
 
   constructor(private service: MountainService, private route: ActivatedRoute) { }
 
@@ -20,6 +22,7 @@ export class ResortTabsComponent implements OnInit {
     this.route.params.subscribe(x => {
       this.id = x['id'];
       this.getTracks();
+      this.getWeather();
     })
   }
 
@@ -32,7 +35,12 @@ export class ResortTabsComponent implements OnInit {
   updateTracks(value: string): void{
     this.service.getTracks(this.id, value).subscribe(x =>{
       this.tracks = x;
-      console.log(this.tracks);
+    })
+  }
+
+  getWeather(): void{
+    this.service.getWeather(this.id).subscribe(x => {
+      this.weather = x;
     })
   }
 

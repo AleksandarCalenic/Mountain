@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ResortTabsComponent } from './resort/resort-tabs/resort-tabs.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TracksComponent } from './resort/tracks/tracks.component';
+import { WeatherComponent } from './resort/weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TracksComponent } from './resort/tracks/tracks.component';
     ResortComponent,
     PageNotFoundComponent,
     ResortTabsComponent,
-    TracksComponent
+    TracksComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
