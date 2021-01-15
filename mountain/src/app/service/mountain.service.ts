@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { Mountain } from '../model/mountain';
 import { Tracks } from '../model/tracks';
 import { Weather } from '../model/weather';
+import { Skipass } from '../model/skipass';
+import { Reservation } from '../model/reservation';
 
 
 const baseurl = "http://localhost:3000/api/skiresorts/";
@@ -46,6 +48,16 @@ export class MountainService {
     return this.http.get(baseurl + id + '/weather').pipe(map(x =>{
       return x as Array<Weather>
     }))
+  }
+
+  getSkipass(id: number): Observable<Skipass[]>{
+    return this.http.get(baseurl + id + '/skipass').pipe(map(x =>{
+      return x as Array<Skipass>
+    }))
+  }
+
+  postReservation(id: number, reservation): Observable<any>{
+    return this.http.post(baseurl + id + "/skipass", reservation)
   }
 
 }

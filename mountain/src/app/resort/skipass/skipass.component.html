@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-4">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Days</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of skipass">
+                    <td>{{s.duration}}</td>
+                    <td>{{s.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-8">
+        <form (ngSubmit)="buttonSubmit()" novalidate #registerForm="ngForm">
+            <div class="form-group form-row">
+                <label for="firstName" class="col-form-label col-sm-2">First name:</label>
+                <input type="firstName" class="form-control col-sm-10" id="firstName" name="firstName" [(ngModel)]="reservation.firstName" required #firstName="ngModel"> 
+                <label for="lastName" class="col-form-label col-sm-2">Last name:</label>
+                <input type="lastName" class="form-control col-sm-10" id="lastName" name="lastName" [(ngModel)]="reservation.lastName" required>
+                <label for="from" class="col-form-label col-sm-2">From: </label>
+                <form class="form-inline">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp1" ngbDatepicker #d1="ngbDatepicker" [(ngModel)]="reservation.from" (dateSelect)="changePrice()" required>
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <label for="to" class="col-form-label col-sm-2">To: </label>
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp2" ngbDatepicker #d2="ngbDatepicker" (dateSelect)="changePrice()" [(ngModel)]="reservation.to" required>
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>      
+                <label for="price" class="col-form-label col-sm-2">Price: </label>
+                <input type="text" id="price" name="price" class="form-control col-sm-10" readonly [(ngModel)]="reservation.price">
+                <button type="submit" class="btn btn-primary float-right" [disabled]="registerForm.form.invalid">Reserve</button>
+            </div>
+        </form>
+    </div>
+</div>

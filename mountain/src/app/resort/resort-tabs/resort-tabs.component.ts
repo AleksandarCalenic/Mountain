@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Reservation } from 'src/app/model/reservation';
+import { Skipass } from 'src/app/model/skipass';
 import { Tracks } from 'src/app/model/tracks';
 import { Weather } from 'src/app/model/weather';
 import { MountainService } from 'src/app/service/mountain.service';
@@ -15,6 +17,7 @@ export class ResortTabsComponent implements OnInit {
   id: number;
   tracks: Tracks[];
   weather: Weather[];
+  skipass: Skipass[];
 
   constructor(private service: MountainService, private route: ActivatedRoute) { }
 
@@ -23,6 +26,7 @@ export class ResortTabsComponent implements OnInit {
       this.id = x['id'];
       this.getTracks();
       this.getWeather();
+      this.getSkipass();
     })
   }
 
@@ -42,6 +46,18 @@ export class ResortTabsComponent implements OnInit {
     this.service.getWeather(this.id).subscribe(x => {
       this.weather = x;
     })
+  }
+
+  getSkipass(): void{
+    this.service.getSkipass(this.id).subscribe(x => {
+      this.skipass = x;
+    })
+  }
+
+  postReservation(value: Reservation): void{
+    this.service.postReservation(this.id, value).subscribe(x =>{
+      alert("Reservation confirm")
+    });
   }
 
 }
